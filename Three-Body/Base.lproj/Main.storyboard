@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bdf-I7-buB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Initial States-->
+        <scene sceneID="RuU-Dc-LiH">
+            <objects>
+                <viewController id="7XH-de-KCg" customClass="InitialStatePickerVC" customModule="Three_Body" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i5K-ge-eQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="EMv-3f-ZP0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Ht-k6-Dm1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-l6-yfG">
+                                <rect key="frame" x="108" y="295" width="159" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Standard"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Standard" id="ono-9D-Kmu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mko-gv-4Q2">
+                                <rect key="frame" x="129" y="161" width="116" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Naive"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Naive" id="egi-wC-UOP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Aw-e9a">
+                                <rect key="frame" x="108" y="435" width="159" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Custom..."/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Custom" id="kvK-Y1-zct"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Initial States" id="yEK-zW-lrS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJd-8m-nHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953" y="-824"/>
+        </scene>
+        <!--Simulation-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SimulatorViewController" customModule="Three_Body" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8l-jO-sQa" customClass="StellarView" customModule="Three_Body" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8DR-Vk-K6g" appends="YES" id="9cZ-KE-xEk"/>
+                                    <outletCollection property="gestureRecognizers" destination="b6i-hr-6fV" appends="YES" id="djl-q5-9sc"/>
+                                    <outletCollection property="gestureRecognizers" destination="9W1-Pi-oHn" appends="YES" id="A3k-rz-eNQ"/>
+                                    <outletCollection property="gestureRecognizers" destination="oqo-SS-KXp" appends="YES" id="f6L-6O-AG7"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STb-JF-9Np">
+                                <rect key="frame" x="0.0" y="64" width="70" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="7Qj-qe-DnF"/>
+                                    <constraint firstAttribute="width" constant="70" id="i2Q-dZ-fTz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="simulationSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oYd-8e-HhJ"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-lr-JKt">
+                                <rect key="frame" x="0.0" y="625" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tES-v3-lDC">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="OTS-eG-hE3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="addStellar:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DHn-n5-4z7"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="NA4-6e-9m4">
+                                        <rect key="frame" x="45" y="0.0" width="330" height="41"/>
+                                        <segments>
+                                            <segment title="×0.1"/>
+                                            <segment title="×1"/>
+                                            <segment title="×5"/>
+                                            <segment title="Max"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="rateSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="gX4-nm-tSH"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NA4-6e-9m4" secondAttribute="bottom" id="TSn-my-5Rv"/>
+                                    <constraint firstItem="NA4-6e-9m4" firstAttribute="top" secondItem="kl9-lr-JKt" secondAttribute="top" id="gmJ-SA-9vB"/>
+                                    <constraint firstItem="NA4-6e-9m4" firstAttribute="leading" secondItem="tES-v3-lDC" secondAttribute="trailing" constant="5" id="mF2-ij-L1D"/>
+                                    <constraint firstAttribute="trailing" secondItem="NA4-6e-9m4" secondAttribute="trailing" id="nUi-Vc-TKw"/>
+                                    <constraint firstAttribute="height" constant="40" id="vRF-oA-Orh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="J8l-jO-sQa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="5CU-c3-dmH"/>
+                            <constraint firstItem="STb-JF-9Np" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="91f-OH-Q05"/>
+                            <constraint firstItem="J8l-jO-sQa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fhe-LR-fgd"/>
+                            <constraint firstItem="J8l-jO-sQa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PA0-Kt-UTk"/>
+                            <constraint firstAttribute="trailing" secondItem="kl9-lr-JKt" secondAttribute="trailing" id="XIe-5q-1WE"/>
+                            <constraint firstItem="STb-JF-9Np" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aO4-3V-AXx"/>
+                            <constraint firstAttribute="trailing" secondItem="J8l-jO-sQa" secondAttribute="trailing" id="evW-Cu-b4v"/>
+                            <constraint firstAttribute="bottom" secondItem="kl9-lr-JKt" secondAttribute="bottom" constant="2" id="jSv-93-6JP"/>
+                            <constraint firstItem="kl9-lr-JKt" firstAttribute="leading" secondItem="J8l-jO-sQa" secondAttribute="leading" id="k7J-j7-PoL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Simulation" id="ANL-Jb-mBy"/>
+                    <connections>
+                        <outlet property="stellarView" destination="J8l-jO-sQa" id="sYe-cM-f6l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="8DR-Vk-K6g">
+                    <connections>
+                        <action selector="rotate:" destination="BYZ-38-t0r" id="2Dv-pg-2Qd"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="b6i-hr-6fV">
+                    <connections>
+                        <action selector="centralize:" destination="BYZ-38-t0r" id="ll1-mJ-Pas"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <rotationGestureRecognizer id="9W1-Pi-oHn">
+                    <connections>
+                        <action selector="rotate2:" destination="BYZ-38-t0r" id="ABK-PN-wap"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <pinchGestureRecognizer id="oqo-SS-KXp">
+                    <connections>
+                        <action selector="changeScale:" destination="BYZ-38-t0r" id="H10-Qh-HNz"/>
+                    </connections>
+                </pinchGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2708" y="-824.43778110944538"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f8I-nv-lIa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bdf-I7-buB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bRw-vK-VZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7XH-de-KCg" kind="relationship" relationship="rootViewController" id="iOh-Th-xrW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYx-mv-ySW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208.8" y="-824.43778110944538"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ono-9D-Kmu"/>
+    </inferredMetricsTieBreakers>
+</document>
