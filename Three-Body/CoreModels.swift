@@ -10,9 +10,9 @@ import Foundation
 
 class StellarBody
 {
-    private var position = ThreeVector(x: 0.0, y: 0.0, z: 0.0)
-    private var velocity = ThreeVector(x: 0.0, y: 0.0, z: 0.0)
-    private var acceleration = ThreeVector(x: 0.0, y: 0.0, z: 0.0)
+    private var position = ThreeVector(0.0, 0.0, 0.0)
+    private var velocity = ThreeVector(0.0, 0.0, 0.0)
+    private var acceleration = ThreeVector(0.0, 0.0, 0.0)
     
     static let velocityToDisplacementScale = 0.02
     static let accelerationToVelocityScale = 0.04
@@ -52,8 +52,6 @@ class StellarBody
         let magnitude = newAcceleration.magnitude
         if magnitude > 1 { // if too close then reduce the acceleration
             newAcceleration /= (magnitude * magnitude * magnitude)
-        } else {
-            
         }
         acceleration += newAcceleration
     }
@@ -84,20 +82,24 @@ class StellarBody
 
 struct ThreeVector
 {
-    var x = 0.0
-    var y = 0.0
-    var z = 0.0
+    var x: Double
+    var y: Double
+    var z: Double
     
     var components: [Double] { return [x,y,z] }
     
-    init() {}
-    
-    init(x: Double, y: Double, z: Double) { self.init(x,y,z) }
+    init() { x = 0.0; y = 0.0; z = 0.0 }
     
     init(_ x: Double, _ y: Double, _ z: Double) { self.x = x; self.y = y; self.z = z }
     
+    init(rho: Double, phi: Double, theta: Double) {
+        x = rho * sin(phi) * cos(theta)
+        y = rho * sin(phi) * sin(theta)
+        z = rho * cos(phi)
+    }
+    
     static func - (left: ThreeVector, right: ThreeVector) -> ThreeVector {
-        return ThreeVector(x: left.x - right.x, y: left.y - right.y, z: left.z - right.z)
+        return ThreeVector(left.x - right.x, left.y - right.y, left.z - right.z)
     }
     
     static func -= (left: inout ThreeVector, right: ThreeVector) {
@@ -109,7 +111,7 @@ struct ThreeVector
     }
     
     static func * (vector: ThreeVector, scale: Double) -> ThreeVector {
-        return ThreeVector(x: vector.x * scale, y: vector.y * scale, z: vector.z * scale)
+        return ThreeVector(vector.x * scale, vector.y * scale, vector.z * scale)
     }
     
     static func *= (vector: inout ThreeVector, scale: Double) {
@@ -136,7 +138,7 @@ struct Matrix3x3
         elements = matrix
     }
     
-    var elements = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+    var elements = [[1.0,0.0,0.0], [0.0,1.0,0.0], [0.0,0.0,1.0]]
     
     static func * (left: Matrix3x3, right: Matrix3x3) -> Matrix3x3 {
         var result = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]

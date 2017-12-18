@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F02E48B1FDCBB6C005D5B0C /* StellarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02E48A1FDCBB6C005D5B0C /* StellarView.swift */; };
 		6F2312751FE35C1B005F1875 /* InitialStatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2312741FE35C1B005F1875 /* InitialStatePickerVC.swift */; };
+		6F245E261FE8026A001AF154 /* AxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F245E251FE8026A001AF154 /* AxesView.swift */; };
 		6F7234411FD92FC900D10B48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7234401FD92FC900D10B48 /* AppDelegate.swift */; };
 		6F7234431FD92FC900D10B48 /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7234421FD92FC900D10B48 /* SimulatorViewController.swift */; };
 		6F7234461FD92FC900D10B48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F7234441FD92FC900D10B48 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		6F02E48A1FDCBB6C005D5B0C /* StellarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StellarView.swift; sourceTree = "<group>"; };
 		6F2312741FE35C1B005F1875 /* InitialStatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStatePickerVC.swift; sourceTree = "<group>"; };
+		6F245E251FE8026A001AF154 /* AxesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesView.swift; sourceTree = "<group>"; };
 		6F72343D1FD92FC900D10B48 /* Three-Body.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Three-Body.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F7234401FD92FC900D10B48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F7234421FD92FC900D10B48 /* SimulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				6F7234421FD92FC900D10B48 /* SimulatorViewController.swift */,
 				6F02E48A1FDCBB6C005D5B0C /* StellarView.swift */,
+				6F245E251FE8026A001AF154 /* AxesView.swift */,
 				6F2312741FE35C1B005F1875 /* InitialStatePickerVC.swift */,
 				6F7234541FDA8EFF00D10B48 /* StableSolutions.swift */,
 				6F7234441FD92FC900D10B48 /* Main.storyboard */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F245E261FE8026A001AF154 /* AxesView.swift in Sources */,
 				6F7234531FD95C6600D10B48 /* CoreModels.swift in Sources */,
 				6F2312751FE35C1B005F1875 /* InitialStatePickerVC.swift in Sources */,
 				6F7234431FD92FC900D10B48 /* SimulatorViewController.swift in Sources */,

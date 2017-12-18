@@ -25,6 +25,7 @@ class InitialStatePickerVC: UIViewController
             for state in initialState {
                 simulatorVC.stellarBodies.append(StellarBody(position: state.InitialPosition, velocity: state.InitalVelocity))
             }
+            StellarBody.centralize(simulatorVC.stellarBodies)
         }
     }
 }

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-l6-yfG">
-                                <rect key="frame" x="108" y="295" width="159" height="77"/>
+                                <rect key="frame" x="108" y="149" width="159" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Standard"/>
@@ -30,8 +30,26 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Standard" id="ono-9D-Kmu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-7z-BhQ">
+                                <rect key="frame" x="22" y="234" width="330" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Sun-Earth-Moon System"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sun-Earth-Moon System" id="EdP-Zh-ARd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zt9-58-1x0">
+                                <rect key="frame" x="75" y="319" width="224" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Axis Oscillation"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Axis Oscillation" id="YIc-VK-txd"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mko-gv-4Q2">
-                                <rect key="frame" x="129" y="161" width="116" height="77"/>
+                                <rect key="frame" x="129" y="64" width="116" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Naive"/>
@@ -40,12 +58,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Aw-e9a">
-                                <rect key="frame" x="108" y="435" width="159" height="77"/>
+                                <rect key="frame" x="108" y="570" width="159" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Custom..."/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Custom" id="kvK-Y1-zct"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REL-3V-Q0b">
+                                <rect key="frame" x="75" y="404" width="224" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="8 Solution"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="8 Solution" id="fzg-Ad-ry2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,19 +108,19 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STb-JF-9Np">
-                                <rect key="frame" x="0.0" y="64" width="70" height="42"/>
+                                <rect key="frame" x="0.0" y="64" width="80" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="7Qj-qe-DnF"/>
-                                    <constraint firstAttribute="width" constant="70" id="i2Q-dZ-fTz"/>
+                                    <constraint firstAttribute="width" constant="80" id="i2Q-dZ-fTz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Pause"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="simulationSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oYd-8e-HhJ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-lr-JKt">
-                                <rect key="frame" x="0.0" y="625" width="375" height="40"/>
+                                <rect key="frame" x="2" y="625" width="371" height="40"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tES-v3-lDC">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -107,9 +134,10 @@
                                             <action selector="addStellar:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DHn-n5-4z7"/>
                                         </connections>
                                     </button>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="NA4-6e-9m4">
-                                        <rect key="frame" x="45" y="0.0" width="330" height="41"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="NA4-6e-9m4">
+                                        <rect key="frame" x="45" y="0.0" width="326" height="41"/>
                                         <segments>
+                                            <segment title="×0.01"/>
                                             <segment title="×0.1"/>
                                             <segment title="×1"/>
                                             <segment title="×5"/>
@@ -128,6 +156,13 @@
                                     <constraint firstAttribute="height" constant="40" id="vRF-oA-Orh"/>
                                 </constraints>
                             </stackView>
+                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IdU-H0-9o7" customClass="AxesView" customModule="Three_Body" customModuleProvider="target">
+                                <rect key="frame" x="295" y="64" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Lr7-ij-YTm"/>
+                                    <constraint firstAttribute="width" constant="80" id="aEN-IW-AkT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -136,15 +171,19 @@
                             <constraint firstItem="STb-JF-9Np" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="91f-OH-Q05"/>
                             <constraint firstItem="J8l-jO-sQa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fhe-LR-fgd"/>
                             <constraint firstItem="J8l-jO-sQa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PA0-Kt-UTk"/>
-                            <constraint firstAttribute="trailing" secondItem="kl9-lr-JKt" secondAttribute="trailing" id="XIe-5q-1WE"/>
+                            <constraint firstAttribute="trailing" secondItem="IdU-H0-9o7" secondAttribute="trailing" id="Pv0-kC-2eB"/>
+                            <constraint firstAttribute="trailing" secondItem="kl9-lr-JKt" secondAttribute="trailing" constant="2" id="XIe-5q-1WE"/>
                             <constraint firstItem="STb-JF-9Np" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aO4-3V-AXx"/>
+                            <constraint firstItem="kl9-lr-JKt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="bcg-q1-s40"/>
                             <constraint firstAttribute="trailing" secondItem="J8l-jO-sQa" secondAttribute="trailing" id="evW-Cu-b4v"/>
                             <constraint firstAttribute="bottom" secondItem="kl9-lr-JKt" secondAttribute="bottom" constant="2" id="jSv-93-6JP"/>
-                            <constraint firstItem="kl9-lr-JKt" firstAttribute="leading" secondItem="J8l-jO-sQa" secondAttribute="leading" id="k7J-j7-PoL"/>
+                            <constraint firstItem="IdU-H0-9o7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kCI-fu-fbD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Simulation" id="ANL-Jb-mBy"/>
                     <connections>
+                        <outlet property="axesView" destination="IdU-H0-9o7" id="0hn-F3-ADb"/>
+                        <outlet property="simulationSwitch" destination="STb-JF-9Np" id="p5A-zj-SXx"/>
                         <outlet property="stellarView" destination="J8l-jO-sQa" id="sYe-cM-f6l"/>
                     </connections>
                 </viewController>
@@ -192,6 +231,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ono-9D-Kmu"/>
+        <segue reference="EdP-Zh-ARd"/>
     </inferredMetricsTieBreakers>
 </document>

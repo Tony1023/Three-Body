@@ -10,13 +10,18 @@ import UIKit
 
 class SimulatorViewController: UIViewController, StellarCoordinateDelegate
 {
-    @IBOutlet weak var stellarView: StellarView!
+    @IBOutlet weak var stellarView: StellarView! { didSet { stellarView.coordinateDelegate = self } }
+    
+    @IBOutlet weak var simulationSwitch: UIButton!
+    
+    @IBOutlet weak var axesView: AxesView!
     
     private weak var displayTimer: Timer?
     
-    private var simulationRate: Double = SimulationRates.x1.rawValue
+    private var simulationRate = SimulationRates.x001.rawValue
     
     private enum SimulationRates: Double {
+        case x001 = 0.0005
         case x01 = 0.00005
         case x1 = 0.0000075
         case x5 = 0.000001
@@ -24,17 +29,20 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     private let simulationRater: Dictionary<String, SimulationRates> = [
+        "×0.01": .x001,
         "×0.1": .x01,
         "×1": .x1,
         "×5": .x5,
         "Max": .full
     ]
     
-    private var rotationMatrix = Matrix3x3([[1.0,0.0,0.0], [0.0,1.0,0.0], [0.0,0.0,1.0]]) {
+    private var rotationMatrix = Matrix3x3() {
         didSet {
-            if !(displayTimer?.isValid ?? false), !stellarBodies.isEmpty {
-                stellarView?.setNeedsDisplay()
+            if !simulationIsOn && !stellarBodies.isEmpty {
+                // When the simulation is paused/not started AND there are some stellar bodies to display
+                stellarView.setNeedsDisplay()
             }
+            axesView.draw(with: axesEndpoints)
         }
     }
     
@@ -49,9 +57,11 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
                 displayTimer = Timer.scheduledTimer(withTimeInterval: 0.0166, repeats: true) { [weak self] _ in
                     self?.stellarView?.setNeedsDisplay()
                 }
+                simulationSwitch.setTitle("Pause", for: .normal)
             } else {
                 displayTimer?.invalidate()
                 displayTimer = nil
+                simulationSwitch.setTitle("Resume", for: .normal)
             }
         }
         get {
@@ -63,8 +73,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stellarView?.coordinateDelegate = self
-        if !stellarBodies.isEmpty { simulationIsOn = true }
+        axesView.draw(with: axesEndpoints)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,7 +92,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     var coordinatesToDraw: [CGPoint]? {
         guard let positions = positions else { return nil }
-        var coordinates = [CGPoint](repeating: CGPoint(x: 0, y: 0), count: positions.count)
+        var coordinates = [CGPoint](repeating: CGPoint(), count: positions.count)
         for body in 0..<positions.count {
             var x = 0.0, y = 0.0
             for i in 0..<3 {
@@ -91,9 +100,23 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
                 x += rotationMatrix.elements[i][0] * components[i]
                 y += rotationMatrix.elements[i][1] * components[i]
             }
-            coordinates[body] = (CGPoint(x: x, y: y))
+            coordinates[body] = CGPoint(x: x, y: y)
         }
         return coordinates
+    }
+    
+    private var axesEndpoints: (x: CGPoint, y: CGPoint, z: CGPoint) {
+        var coordinates = [CGPoint(), CGPoint(), CGPoint()]
+        let positions = Matrix3x3().elements
+        for axis in 0..<3 {
+            var x = 0.0, y = 0.0
+            for i in 0..<3 {
+                x += rotationMatrix.elements[i][0] * positions[axis][i]
+                y += rotationMatrix.elements[i][1] * positions[axis][i]
+            }
+            coordinates[axis] = CGPoint(x: x, y: y)
+        }
+        return (coordinates[0], coordinates[1], coordinates[2])
     }
     
     private func startSimulation() {
@@ -116,16 +139,14 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     @IBAction func addStellar(_ sender: UIButton, forEvent event: UIEvent) {
         simulationIsOn = false
         stellarBodies.append(StellarBody(random: true))
-        simulationIsOn = true
+        stellarView.setNeedsDisplay()
     }
     
     @IBAction func simulationSwitch(_ sender: UIButton) {
         if simulationIsOn {
             simulationIsOn = false
-            sender.setTitle("Resume", for: .normal)
-        } else {
+        } else if !stellarBodies.isEmpty {
             simulationIsOn = true
-            sender.setTitle("Pause", for: .normal)
         }
     }
     
@@ -140,7 +161,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     @IBAction func changeScale(_ pinch: UIPinchGestureRecognizer) {
         switch pinch.state {
         case .changed, .ended:
-            stellarView?.scale *= pinch.scale
+            stellarView.scale *= pinch.scale
             pinch.scale = 1
         default:
             break
@@ -148,12 +169,13 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     @IBAction func rotate(_ pan: UIPanGestureRecognizer) {
-        func rotate(with matrix: Matrix3x3) { rotationMatrix *= matrix }
         switch pan.state {
         case .changed, .ended:
             let translation = pan.translation(in: stellarView)
-            rotate(with: RotationalMatrices.horizontal(by: Double(translation.x) / 100))
-            rotate(with: RotationalMatrices.vertical(by: Double(-translation.y) / 100))
+            var rotator = Matrix3x3()
+            rotator *= RotationalMatrices.horizontal(by: Double(translation.x) / 100)
+            rotator *= RotationalMatrices.vertical(by: Double(-translation.y) / 100)
+            rotationMatrix *= rotator
             pan.setTranslation(CGPoint.zero, in: stellarView)
         default:
             break
