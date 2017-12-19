@@ -27,5 +27,12 @@ class InitialStatePickerVC: UIViewController
             }
             StellarBody.centralize(simulatorVC.stellarBodies)
         }
+        if let randomSimulatorVC = destinationVC as? RandomSimulatorViewController {
+            let numberOfStars = arc4random() % 5 + 1
+            for _ in 0..<numberOfStars {
+                randomSimulatorVC.stellarBodies.append(StellarBody(random: true))
+            }
+            StellarBody.centralize(randomSimulatorVC.stellarBodies)
+        }
     }
 }

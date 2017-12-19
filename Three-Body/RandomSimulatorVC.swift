@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SimulatorViewController: UIViewController, StellarCoordinateDelegate
+class RandomSimulatorViewController: UIViewController, StellarCoordinateDelegate
 {
     @IBOutlet weak var stellarView: StellarView! { didSet { stellarView.coordinateDelegate = self } }
     
@@ -73,6 +73,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        simulationIsOn = true
         axesView.draw(with: axesEndpoints)
     }
     
@@ -149,12 +150,6 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
                 Thread.sleep(forTimeInterval: self!.simulationRate)
             }
         }
-    }
-    
-    @IBAction func addStellar(_ sender: UIButton, forEvent event: UIEvent) {
-        simulationIsOn = false
-        stellarBodies.append(StellarBody(random: true))
-        stellarView.setNeedsDisplay()
     }
     
     @IBAction func simulationSwitch(_ sender: UIButton) {

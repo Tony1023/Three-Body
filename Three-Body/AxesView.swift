@@ -18,6 +18,8 @@ class AxesView: UIView
     
     private let color = [UIColor.blue, UIColor.yellow, UIColor.red]
     
+    //private let indexToAxis = ["x", "y", "z"]
+    
     func draw(with endpoints: [(CGPoint, Int)]) {
         self.endpoints = endpoints
         for i in 0..<3 {

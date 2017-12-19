@@ -34,11 +34,12 @@ struct StableStateGenerator
         stellarStates.append((ThreeVector(-50,0,0), ThreeVector(0,0.11,0)))
         stellarStates.append((ThreeVector(0,0,0), ThreeVector(0,0,0.4)))
         states["Axis Oscillation"] = stellarStates
+        /*
         stellarStates = []
         stellarStates.append((ThreeVector(30,30,0), ThreeVector(0,0.1,0)))
         stellarStates.append((ThreeVector(-30,30,0), ThreeVector(0,-0.1,0)))
-        stellarStates.append((ThreeVector(0,-60,0), ThreeVector(0.05,0,0)))
-        states["8 Solution"] = stellarStates
+        stellarStates.append((ThreeVector(0,-60,0), ThreeVector(0.1,0,0)))
+        states["8 Solution"] = stellarStates */
     }
     
     private var states: Dictionary<String, [InitialState]>
