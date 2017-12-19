@@ -18,7 +18,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     private weak var displayTimer: Timer?
     
-    private var simulationRate = SimulationRates.x001.rawValue
+    private var simulationRate = SimulationRates.x1.rawValue
     
     private enum SimulationRates: Double {
         case x001 = 0.0005
@@ -105,18 +105,33 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         return coordinates
     }
     
-    private var axesEndpoints: (x: CGPoint, y: CGPoint, z: CGPoint) {
-        var coordinates = [CGPoint(), CGPoint(), CGPoint()]
+    private var axesEndpoints: [(CGPoint, Int)] {
+        var coordinates = [(point: CGPoint, depth: Double, axis: Int)] (repeating: (CGPoint.zero, 0.0, 0), count: 3)
         let positions = Matrix3x3().elements
         for axis in 0..<3 {
-            var x = 0.0, y = 0.0
+            var x = 0.0, y = 0.0, z = 0.0
             for i in 0..<3 {
                 x += rotationMatrix.elements[i][0] * positions[axis][i]
                 y += rotationMatrix.elements[i][1] * positions[axis][i]
+                z += rotationMatrix.elements[i][2] * positions[axis][i]
             }
-            coordinates[axis] = CGPoint(x: x, y: y)
+            coordinates[axis] = (CGPoint(x: x, y: y), z, axis)
         }
-        return (coordinates[0], coordinates[1], coordinates[2])
+        // Insertion sort?
+        if coordinates[0].depth > coordinates[1].depth {
+            swap(&coordinates[0], &coordinates[1])
+        }
+        if coordinates[1].depth > coordinates[2].depth {
+            swap(&coordinates[1], &coordinates[2])
+            if coordinates[0].depth > coordinates[1].depth {
+                swap(&coordinates[0], &coordinates[1])
+            }
+        }
+        var endpoints = [(CGPoint, Int)]()
+        for item in coordinates {
+            endpoints.append((item.point, item.axis))
+        }
+        return endpoints
     }
     
     private func startSimulation() {
@@ -196,6 +211,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     @IBAction func centralize(_ sender: UITapGestureRecognizer) {
         StellarBody.centralize(stellarBodies)
+        stellarView.setNeedsDisplay()
     }
 
 }

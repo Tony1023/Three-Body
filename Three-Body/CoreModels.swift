@@ -29,14 +29,14 @@ class StellarBody
     init(random: Bool) {
         if random {
             // Using spherical coordinates to generate vectors
-            let p_Rho = Double.getNonNegativeRandom(below: 50)
+            let p_Rho = Double.getNonNegativeRandom(below: 100)
             let p_Phi = Double.getNonNegativeRandom(below: Double.pi)
             let p_Theta = Double.getNonNegativeRandom(below: Double.pi * 2)
             position.x = p_Rho * sin(p_Phi) * cos (p_Theta)
             position.y = p_Rho * sin(p_Phi) * sin (p_Phi)
             position.z = p_Rho * cos(p_Phi)
             
-            let v_Rho = Double.getNonNegativeRandom(below: 0.2)
+            let v_Rho = Double.getNonNegativeRandom(below: 0.1)
             let v_Phi = Double.getNonNegativeRandom(below: Double.pi)
             let v_Theta = Double.getNonNegativeRandom(below: Double.pi * 2)
             velocity.x = v_Rho * sin(v_Phi) * cos (v_Theta)

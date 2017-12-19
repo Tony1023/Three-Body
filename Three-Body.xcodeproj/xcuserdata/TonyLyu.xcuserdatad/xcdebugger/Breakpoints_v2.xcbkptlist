@@ -114,53 +114,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Three-Body/SimulatorViewController.swift"
-            timestampString = "535308138.705065"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "rotate2(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Three_Body.SimulatorViewController.rotate2 (__ObjC.UIRotationGestureRecognizer) -&gt; ()"
-                  moduleName = "Three-Body"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Developer/Apps/Three-Body/Three-Body/SimulatorViewController.swift"
-                  timestampString = "535172104.461544"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "123">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Three_Body.SimulatorViewController.rotate2 (__ObjC.UIRotationGestureRecognizer) -&gt; ()"
-                  moduleName = "Three-Body"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Developer/Apps/Three-Body/Three-Body/SimulatorViewController.swift"
-                  timestampString = "535172104.46366"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "145">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

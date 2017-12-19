@@ -10,48 +10,44 @@ import UIKit
 
 class AxesView: UIView
 {
-    private var endPoints: (x: CGPoint, y: CGPoint, z: CGPoint)?
+    private var endpoints: [(point: CGPoint, axis: Int)]?
     
     private lazy var origin: CGPoint = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
     
-    func draw(with endPoints: (x: CGPoint, y: CGPoint, z: CGPoint)) {
-        self.endPoints = endPoints
+    private lazy var axisLength: CGFloat = self.bounds.midX * 0.8
+    
+    private let color = [UIColor.blue, UIColor.yellow, UIColor.red]
+    
+    func draw(with endpoints: [(CGPoint, Int)]) {
+        self.endpoints = endpoints
+        for i in 0..<3 {
+            self.endpoints![i].point *= axisLength
+            self.endpoints![i].point += origin
+        }
         setNeedsDisplay()
     }
     
-    private func pathForXAxes() -> UIBezierPath {
+    private func pathForAxis(with endpoint: CGPoint) -> UIBezierPath {
         let path = UIBezierPath()
-        guard let endPoints = endPoints else { return path }
         path.move(to: origin)
-        path.addLine(to: endPoints.x * 20 + origin)
+        path.addLine(to: endpoint)
+        path.lineWidth = 3
         return path
     }
     
-    private func pathForYAxes() -> UIBezierPath {
-        let path = UIBezierPath()
-        guard let endPoints = endPoints else { return path }
-        path.move(to: origin)
-        path.addLine(to: endPoints.y * 20 + origin)
-        return path
-    }
-    
-    private func pathForZAxes() -> UIBezierPath {
-        let path = UIBezierPath()
-        guard let endPoints = endPoints else { return path }
-        path.move(to: origin)
-        path.addLine(to: endPoints.z * 20 + origin)
+    private func solidAtEndpoint(with endpoint: CGPoint) -> UIBezierPath{
+        let path = UIBezierPath(arcCenter: endpoint, radius: 1.5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        path.lineWidth = 3.5
         return path
     }
     
     override func draw(_ rect: CGRect) {
-        UIColor.blue.set()
-        pathForXAxes().stroke()
-        UIColor.yellow.set()
-        pathForYAxes().stroke()
-        UIColor.red.set()
-        pathForZAxes().stroke()
+        if let endpoints = endpoints {
+            for endpoint in endpoints {
+                color[endpoint.axis].set()
+                pathForAxis(with: endpoint.point).stroke()
+                solidAtEndpoint(with: endpoint.point).stroke()
+            }
+        }
     }
 }
-
-// Try to draw them in top-down order, to show which axis comes on top
-// Also a considered task for laying out stellar bodies

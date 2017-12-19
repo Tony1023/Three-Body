@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="height" constant="40" id="vRF-oA-Orh"/>
                                 </constraints>
                             </stackView>
-                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IdU-H0-9o7" customClass="AxesView" customModule="Three_Body" customModuleProvider="target">
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IdU-H0-9o7" customClass="AxesView" customModule="Three_Body" customModuleProvider="target">
                                 <rect key="frame" x="295" y="64" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Lr7-ij-YTm"/>
