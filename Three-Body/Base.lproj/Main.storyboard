@@ -299,7 +299,6 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="1Ur-jM-YFz" appends="YES" id="o3O-ED-r34"/>
-                                    <outletCollection property="gestureRecognizers" destination="tqq-Y1-Iue" appends="YES" id="AK7-SK-KiQ"/>
                                     <outletCollection property="gestureRecognizers" destination="cTq-jg-jSn" appends="YES" id="aKB-cy-baN"/>
                                     <outletCollection property="gestureRecognizers" destination="BNi-Qe-mWG" appends="YES" id="rTS-2d-2Zm"/>
                                 </connections>
@@ -354,7 +353,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="simulationSwitch:" destination="BHW-VS-wuq" eventType="touchUpInside" id="QfG-fe-Cj8"/>
+                                    <action selector="newCase:" destination="BHW-VS-wuq" eventType="touchUpInside" id="uTV-tL-FyE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -389,11 +388,6 @@
                         <action selector="rotate:" destination="BHW-VS-wuq" id="Ztq-wM-ElU"/>
                     </connections>
                 </panGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="tqq-Y1-Iue">
-                    <connections>
-                        <action selector="centralize:" destination="BHW-VS-wuq" id="KRQ-TB-7pg"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <rotationGestureRecognizer id="cTq-jg-jSn">
                     <connections>
                         <action selector="rotate2:" destination="BHW-VS-wuq" id="BPj-3A-iVH"/>
