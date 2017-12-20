@@ -40,6 +40,7 @@ class StellarView: UIView
                     stellarSubviews[view].removeFromSuperview()
                 }
             }
+            stellarSubviews = subviews
             for body in 0..<stellarSubviews.count {
                 var newPt = coordinates[body] * scale
                 newPt += CGPoint(x: bounds.midX - scale * 5, y: bounds.midY - scale * 5)
