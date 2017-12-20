@@ -295,23 +295,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zK-uY-WUB" customClass="StellarView" customModule="Three_Body" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qn7-Dv-WY1">
-                                        <rect key="frame" x="8" y="54" width="80" height="38"/>
-                                        <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="1kq-9F-w0P"/>
-                                            <constraint firstAttribute="height" constant="38" id="oTz-rB-b74"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="New">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="simulationSwitch:" destination="BHW-VS-wuq" eventType="touchUpInside" id="QfG-fe-Cj8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -359,21 +342,36 @@
                                     <constraint firstAttribute="height" constant="80" id="je2-vs-kEt"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qn7-Dv-WY1">
+                                <rect key="frame" x="8" y="118" width="80" height="38"/>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1kq-9F-w0P"/>
+                                    <constraint firstAttribute="height" constant="38" id="oTz-rB-b74"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="New">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="simulationSwitch:" destination="BHW-VS-wuq" eventType="touchUpInside" id="QfG-fe-Cj8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="s7q-h0-6L7" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leadingMargin" constant="2" id="5ah-KF-RXO"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" id="7an-Us-QB8"/>
+                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="top" secondItem="RUI-5U-VYW" secondAttribute="bottom" constant="8" id="98G-ZM-8XY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s7q-h0-6L7" secondAttribute="trailing" constant="2" id="HmO-Li-0g5"/>
                             <constraint firstItem="RUI-5U-VYW" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leading" constant="8" id="LaM-Gg-QFb"/>
                             <constraint firstItem="RUI-5U-VYW" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" constant="8" id="LqA-W9-Rg9"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="bottom" secondItem="ssC-XQ-3rX" secondAttribute="top" id="P4A-W2-EbP"/>
-                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="leading" secondItem="RUI-5U-VYW" secondAttribute="leading" id="RbJ-Eb-KTI"/>
                             <constraint firstAttribute="trailing" secondItem="0zK-uY-WUB" secondAttribute="trailing" id="SGY-rm-xtp"/>
+                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="leading" secondItem="RUI-5U-VYW" secondAttribute="leading" id="bs1-Ew-VMG"/>
                             <constraint firstItem="IiJ-mH-I5e" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" id="nVz-1a-mmD"/>
                             <constraint firstItem="ssC-XQ-3rX" firstAttribute="top" secondItem="s7q-h0-6L7" secondAttribute="bottom" constant="2" id="oP4-JA-1NQ"/>
-                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="top" secondItem="RUI-5U-VYW" secondAttribute="bottom" constant="8" id="ohI-RT-qos"/>
                             <constraint firstAttribute="trailing" secondItem="IiJ-mH-I5e" secondAttribute="trailing" id="unC-OR-Hrw"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leading" id="yrl-Ql-WoL"/>
                         </constraints>
@@ -407,7 +405,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1209" y="-63"/>
+            <point key="canvasLocation" x="1208.8" y="-63.418290854572717"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
