@@ -46,7 +46,12 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         }
     }
     
-    var stellarBodies = [StellarBody] ()
+    var stellarBodies = [StellarBody] () {
+        willSet { stellarBodies_willSetHelper() }
+        didSet { stellarBodies_didSetHelper() }
+    }
+    func stellarBodies_willSetHelper () { simulationIsOn = false }
+    func stellarBodies_didSetHelper () { stellarView?.setNeedsDisplay() }
     
     var simulationIsOn: Bool { // Setting it from false to true fires dispatches a queue and fires the timer
         set {
@@ -96,9 +101,8 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         for body in 0..<positions.count {
             var x = 0.0, y = 0.0
             for i in 0..<3 {
-                let components = positions[body].components
-                x += rotationMatrix.elements[i][0] * components[i]
-                y += rotationMatrix.elements[i][1] * components[i]
+                x += rotationMatrix.elements[i][0] * positions[body][i]
+                y += rotationMatrix.elements[i][1] * positions[body][i]
             }
             coordinates[body] = CGPoint(x: x, y: y)
         }
@@ -152,9 +156,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     @IBAction func addStellar(_ sender: UIButton, forEvent event: UIEvent) {
-        simulationIsOn = false
         stellarBodies.append(StellarBody(random: true))
-        stellarView.setNeedsDisplay()
     }
     
     @IBAction func simulationSwitch(_ sender: UIButton) {
