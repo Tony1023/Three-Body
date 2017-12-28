@@ -9,44 +9,63 @@
 import UIKit
 class RandomSimulatorViewController: SimulatorViewController
 {
+    override var stellarBodies: [StellarBody] {
+        willSet {
+            simulationIsOn = false
+        }
+    }
+    
     private var escapeCheckerTimer: Timer?
+    
+    private var currentCountdownTimer: Timer?
+    
+    private var countdown: Int?
     
     private var escaped = false {
         didSet {
-            if escaped && !oldValue {
-                navigationItem.title = "Escaped. Restarting in 3..."
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                    self?.navigationItem.title = "Escaped. Restarting in 2..."
-                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                        self?.navigationItem.title = "Escaped. Restarting in 1..."
-                        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-                            self?.startNew()
-                            self?.simulationIsOn = true
-                        }
-                    }
+            if escaped { beginRestartCountdown(from: 5) }
+        }
+    }
+    
+    private func beginRestartCountdown(from time: Int) {
+        if time <= 0 {
+            startNew()
+            simulationIsOn = true
+            
+            print(countdown ?? -1)
+        } else {
+            navigationItem.title = "Escaped. Restarting in \(time)..."
+            countdown = time
+            if simulationIsOn {
+                currentCountdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
+                    self?.beginRestartCountdown(from: time - 1)
                 }
             }
         }
     }
     
+    private var helper_simulationIsOn = true
+    
     override var simulationIsOn: Bool {
         set {
-            if newValue == simulationIsOn { return }
+            if newValue == helper_simulationIsOn { return }
+            helper_simulationIsOn = newValue
             super.simulationIsOn = newValue
-            if newValue && !escaped {
+            if newValue {
                 escapeCheckerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                     if self == nil { return }
                     if StellarBody.escaped(of: self!.stellarBodies) {
                         self!.escaped = true
-                        self!.escapeCheckerTimer!.invalidate()
                     }
                 }
+                if let time = countdown { beginRestartCountdown(from: time) }
             } else {
                 escapeCheckerTimer?.invalidate()
+                currentCountdownTimer?.invalidate()
             }
         }
         get {
-            return super.simulationIsOn
+            return helper_simulationIsOn
         }
     }
     
@@ -58,6 +77,8 @@ class RandomSimulatorViewController: SimulatorViewController
         }
         StellarBody.centralize(super.stellarBodies)
         escaped = false
+        navigationItem.title = nil
+        countdown = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
