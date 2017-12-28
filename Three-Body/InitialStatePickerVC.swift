@@ -15,7 +15,6 @@ class InitialStatePickerVC: UIViewController
         if let navigationC = destinationVC as? UINavigationController {
             if navigationC.visibleViewController != nil {
                 destinationVC = navigationC.visibleViewController!
-                destinationVC.navigationItem.backBarButtonItem?.title = "States"
             }
         }
         if let simulatorVC = destinationVC as? SimulatorViewController {

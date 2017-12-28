@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Initial States-->
+        <!--Setup-->
         <scene sceneID="RuU-Dc-LiH">
             <objects>
                 <viewController id="7XH-de-KCg" customClass="InitialStatePickerVC" customModule="Three_Body" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,7 +97,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Initial States" id="yEK-zW-lrS"/>
+                    <navigationItem key="navigationItem" title="Setup" id="yEK-zW-lrS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJd-8m-nHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
