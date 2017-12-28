@@ -151,13 +151,11 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
                 for i in 0..<self!.stellarBodies.count {
                     for j in 0..<self!.stellarBodies.count {
                         if i != j {
-                            if !self!.onDisplay { break }
                             self!.stellarBodies[i].gravitate(towards: self!.stellarBodies[j])
                         }
                     }
                 }
                 for i in 0..<self!.stellarBodies.count {
-                    if !self!.onDisplay { break }
                     self!.stellarBodies[i].move()
                 }
                 Thread.sleep(forTimeInterval: self!.simulationRate)
