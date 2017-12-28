@@ -9,22 +9,28 @@
 import UIKit
 class RandomSimulatorViewController: SimulatorViewController
 {
+    /*
     override func stellarBodies_willSetHelper() {}
     override func stellarBodies_didSetHelper() {}
+     */
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        simulationIsOn = true
-    }
-    
-    @IBAction func newCase(_ sender: UIButton) {
-        simulationIsOn = false
+    func startNew() {
         stellarBodies = []
         let numberOfStars = arc4random() % 3 + 3
         for _ in 0..<numberOfStars {
             stellarBodies.append(StellarBody(random: true))
         }
         StellarBody.centralize(super.stellarBodies)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        simulationIsOn = true
+    }
+    
+    @IBAction func newCase(_ sender: UIBarButtonItem) {
+        simulationSwitch.setTitle("Pause", for: .normal)
+        startNew()
         simulationIsOn = true
     }
 }

@@ -10,29 +10,25 @@ import UIKit
 
 class InitialStatePickerVC: UIViewController
 {
-    private let initialStates = StableStateGenerator()
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var destinationVC = segue.destination
         if let navigationC = destinationVC as? UINavigationController {
             if navigationC.visibleViewController != nil {
                 destinationVC = navigationC.visibleViewController!
+                destinationVC.navigationItem.backBarButtonItem?.title = "States"
             }
         }
-        if let simulatorVC = destinationVC as? SimulatorViewController,
-            let identifier = segue.identifier,
-            let initialState = initialStates.stableStates[identifier] {
-            for state in initialState {
-                simulatorVC.stellarBodies.append(StellarBody(position: state.InitialPosition, velocity: state.InitalVelocity))
+        if let simulatorVC = destinationVC as? SimulatorViewController {
+            simulatorVC.navigationItem.title = segue.identifier
+            if let initialState = initialStates.stableStates[segue.identifier ?? ""] {
+                for state in initialState {
+                    simulatorVC.stellarBodies.append(StellarBody(position: state.InitialPosition, velocity: state.InitalVelocity))
+                }
+                StellarBody.centralize(simulatorVC.stellarBodies)
             }
-            StellarBody.centralize(simulatorVC.stellarBodies)
         }
         if let randomSimulatorVC = destinationVC as? RandomSimulatorViewController {
-            let numberOfStars = arc4random() % 5 + 1
-            for _ in 0..<numberOfStars {
-                randomSimulatorVC.stellarBodies.append(StellarBody(random: true))
-            }
-            StellarBody.centralize(randomSimulatorVC.stellarBodies)
+            randomSimulatorVC.startNew()
         }
     }
 }

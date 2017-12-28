@@ -10,9 +10,9 @@ import Foundation
 
 class StellarBody
 {
-    private var position = ThreeVector(0.0, 0.0, 0.0)
-    private var velocity = ThreeVector(0.0, 0.0, 0.0)
-    private var acceleration = ThreeVector(0.0, 0.0, 0.0)
+    fileprivate var position = ThreeVector(0.0, 0.0, 0.0)
+    fileprivate var velocity = ThreeVector(0.0, 0.0, 0.0)
+    fileprivate var acceleration = ThreeVector(0.0, 0.0, 0.0)
     
     static let velocityToDisplacementScale = 0.02
     static let accelerationToVelocityScale = 0.04
@@ -32,16 +32,11 @@ class StellarBody
             let p_Rho = Double.getNonNegativeRandom(below: 100)
             let p_Phi = Double.getNonNegativeRandom(below: Double.pi)
             let p_Theta = Double.getNonNegativeRandom(below: Double.pi * 2)
-            position.x = p_Rho * sin(p_Phi) * cos (p_Theta)
-            position.y = p_Rho * sin(p_Phi) * sin (p_Phi)
-            position.z = p_Rho * cos(p_Phi)
-            
+            position = ThreeVector(rho: p_Rho, phi: p_Phi, theta: p_Theta)
             let v_Rho = Double.getNonNegativeRandom(below: 0.1)
             let v_Phi = Double.getNonNegativeRandom(below: Double.pi)
             let v_Theta = Double.getNonNegativeRandom(below: Double.pi * 2)
-            velocity.x = v_Rho * sin(v_Phi) * cos (v_Theta)
-            velocity.y = v_Rho * sin(v_Phi) * sin (v_Phi)
-            velocity.z = v_Rho * cos(v_Phi)
+            velocity = ThreeVector(rho: v_Rho, phi: v_Phi, theta: v_Theta)
         }
     }
     
@@ -62,7 +57,9 @@ class StellarBody
         acceleration.setToZero()
         position += (velocity * StellarBody.velocityToDisplacementScale)
     }
-    
+}
+
+extension StellarBody {
     static func centralize(_ bodies: [StellarBody]) {
         let number = bodies.count
         var positionSum = ThreeVector()
@@ -78,6 +75,25 @@ class StellarBody
             bodies[i].velocity -= velocitySum
         }
     }
+    
+    private func didEscape(from bodies: [StellarBody]) -> Bool {
+        let kineticEnergy = velocity.magnituedSquared / 2.0
+        var gravitationalPotentialEnergy = 0.0
+        for body in bodies {
+            if body.position == position { continue }
+            gravitationalPotentialEnergy += 1.0 / (body.position - position).magnitude
+        }
+        return (kineticEnergy >= gravitationalPotentialEnergy)
+    }
+    
+    static func escaped(of bodies: [StellarBody]) -> Bool {
+        var escaped = false
+        for body in bodies {
+            escaped = body.didEscape(from: bodies) || escaped
+        }
+        return escaped
+    }
+    
 }
 
 struct ThreeVector
@@ -85,8 +101,6 @@ struct ThreeVector
     var x: Double
     var y: Double
     var z: Double
-    
-    var components: [Double] { return [x,y,z] }
     
     init() { x = 0.0; y = 0.0; z = 0.0 }
     
@@ -96,6 +110,19 @@ struct ThreeVector
         x = rho * sin(phi) * cos(theta)
         y = rho * sin(phi) * sin(theta)
         z = rho * cos(phi)
+    }
+    
+    subscript (index: Int) -> Double {
+        switch index {
+        case 0:
+            return x
+        case 1:
+            return y
+        case 2:
+            return z
+        default:
+            return Double.nan
+        }
     }
     
     static func - (left: ThreeVector, right: ThreeVector) -> ThreeVector {
@@ -120,6 +147,10 @@ struct ThreeVector
     
     static func /= (vector: inout ThreeVector, scale: Double) {
         vector.x /= scale; vector.y /= scale; vector.z /= scale
+    }
+    
+    static func == (left: ThreeVector, right: ThreeVector) -> Bool {
+        return (left.x == right.x && left.y == right.y && left.z == right.z)
     }
     
     mutating func setToZero() { x = 0.0; y = 0.0; z = 0.0 }
@@ -157,7 +188,8 @@ struct Matrix3x3
     }
 }
 
-struct RotationalMatrices {
+struct RotationalMatrices
+{
     static func vertical(by angle: Double) -> Matrix3x3 {
         return Matrix3x3([[1.0, 0.0, 0.0],
                           [0, cos(angle), sin(angle)],
@@ -175,8 +207,7 @@ struct RotationalMatrices {
     }
 }
 
-extension Double
-{
+extension Double {
     static func getNonNegativeRandom(below maxValue: Double) -> Double {
         let random = Double(arc4random()) / 0xFFFFFFFF
         return random * maxValue

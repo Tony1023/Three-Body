@@ -46,3 +46,5 @@ struct StableStateGenerator
     
     var stableStates: Dictionary<String, [InitialState]> { return states }
 }
+
+let initialStates = StableStateGenerator()

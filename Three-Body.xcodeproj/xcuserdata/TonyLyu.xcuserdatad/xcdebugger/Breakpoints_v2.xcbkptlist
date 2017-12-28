@@ -88,30 +88,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Three-Body/StellarView.swift"
-            timestampString = "535304502.620794"
+            filePath = "Three-Body/SimulatorViewController.swift"
+            timestampString = "535552077.965174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "draw(_:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "startSimulation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Three-Body/StellarView.swift"
-            timestampString = "535304502.620794"
+            filePath = "Three-Body/SimulatorViewController.swift"
+            timestampString = "535551906.541165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "draw(_:)"
-            landmarkType = "7">
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "stellarBodies"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

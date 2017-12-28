@@ -18,6 +18,10 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     
     private weak var displayTimer: Timer?
     
+    private weak var escapeCheckerTimer: Timer?
+    
+    @IBOutlet weak var resetButton: UIBarButtonItem!
+    
     private var simulationRate = SimulationRates.x1.rawValue
     
     private enum SimulationRates: Double {
@@ -47,11 +51,9 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     var stellarBodies = [StellarBody] () {
-        willSet { stellarBodies_willSetHelper() }
-        didSet { stellarBodies_didSetHelper() }
+        willSet { simulationIsOn = false }
+        didSet { stellarView?.setNeedsDisplay() }
     }
-    func stellarBodies_willSetHelper () { simulationIsOn = false }
-    func stellarBodies_didSetHelper () { stellarView?.setNeedsDisplay() }
     
     var simulationIsOn: Bool { // Setting it from false to true fires dispatches a queue and fires the timer
         set {
@@ -67,6 +69,7 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
                 displayTimer?.invalidate()
                 displayTimer = nil
                 simulationSwitch.setTitle("Resume", for: .normal)
+                repeat { /* Wait for the other queue to end */ } while !executionEnded
             }
         }
         get {
@@ -75,6 +78,8 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     private var onDisplay = false // To let another queue know whether to keep executing
+    
+    private var executionEnded = true // To flag whether the other queue has ended
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -139,19 +144,25 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
     }
     
     private func startSimulation() {
+        executionEnded = false
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             if self == nil { return }
             while self!.onDisplay {
                 for i in 0..<self!.stellarBodies.count {
                     for j in 0..<self!.stellarBodies.count {
                         if i != j {
+                            if !self!.onDisplay { break }
                             self!.stellarBodies[i].gravitate(towards: self!.stellarBodies[j])
                         }
                     }
                 }
-                for i in 0..<self!.stellarBodies.count { self!.stellarBodies[i].move() }
+                for i in 0..<self!.stellarBodies.count {
+                    if !self!.onDisplay { break }
+                    self!.stellarBodies[i].move()
+                }
                 Thread.sleep(forTimeInterval: self!.simulationRate)
             }
+            self!.executionEnded = true
         }
     }
     
@@ -159,11 +170,23 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         stellarBodies.append(StellarBody(random: true))
     }
     
+    @IBAction func restart(_ sender: UIBarButtonItem) {
+        stellarBodies = []
+        if let initialStates = initialStates.stableStates[navigationItem.title ?? ""] {
+            for state in initialStates {
+                stellarBodies.append(StellarBody(position: state.InitialPosition, velocity: state.InitalVelocity))
+            }
+        }
+        simulationSwitch.setTitle("Start", for: .normal)
+        resetButton.isEnabled = false
+    }
+    
     @IBAction func simulationSwitch(_ sender: UIButton) {
         if simulationIsOn {
             simulationIsOn = false
         } else if !stellarBodies.isEmpty {
             simulationIsOn = true
+            if !resetButton.isEnabled { resetButton.isEnabled = true }
         }
     }
     
@@ -216,5 +239,8 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         if !simulationIsOn { stellarView.setNeedsDisplay() }
     }
 
+    @IBAction func resetAxes(_ sender: UITapGestureRecognizer) {
+        rotationMatrix = Matrix3x3()
+    }
 }
 

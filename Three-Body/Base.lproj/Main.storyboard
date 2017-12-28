@@ -32,12 +32,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-7z-BhQ">
-                                <rect key="frame" x="21.5" y="188" width="330" height="50"/>
+                                <rect key="frame" x="118" y="188" width="137" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Sun-Earth-Moon System"/>
+                                <state key="normal" title="2+1 System"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sun-Earth-Moon System" id="EdP-Zh-ARd"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="2+1 System" id="EdP-Zh-ARd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zt9-58-1x0">
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REL-3V-Q0b">
-                                <rect key="frame" x="71" y="304" width="230" height="50"/>
+                                <rect key="frame" x="109" y="304" width="156" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="8-Figure Solution"/>
@@ -131,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="1953" y="-63"/>
         </scene>
-        <!--Simulation-->
+        <!--Simulator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SimulatorViewController" customModule="Three_Body" customModuleProvider="target" sceneMemberID="viewController">
@@ -152,6 +152,7 @@
                                     <outletCollection property="gestureRecognizers" destination="b6i-hr-6fV" appends="YES" id="djl-q5-9sc"/>
                                     <outletCollection property="gestureRecognizers" destination="9W1-Pi-oHn" appends="YES" id="A3k-rz-eNQ"/>
                                     <outletCollection property="gestureRecognizers" destination="oqo-SS-KXp" appends="YES" id="f6L-6O-AG7"/>
+                                    <outletCollection property="gestureRecognizers" destination="87I-Jv-c4j" appends="YES" id="qb4-VS-dLI"/>
                                 </connections>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STb-JF-9Np">
@@ -232,9 +233,16 @@
                             <constraint firstAttribute="bottom" secondItem="kl9-lr-JKt" secondAttribute="bottom" constant="2" id="jSv-93-6JP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Simulation" id="ANL-Jb-mBy"/>
+                    <navigationItem key="navigationItem" id="ANL-Jb-mBy">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="nIe-hs-DKC">
+                            <connections>
+                                <action selector="restart:" destination="BYZ-38-t0r" id="iIu-Qk-Svq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="axesView" destination="IdU-H0-9o7" id="0hn-F3-ADb"/>
+                        <outlet property="resetButton" destination="nIe-hs-DKC" id="sjo-u6-zUo"/>
                         <outlet property="simulationSwitch" destination="STb-JF-9Np" id="p5A-zj-SXx"/>
                         <outlet property="stellarView" destination="J8l-jO-sQa" id="sYe-cM-f6l"/>
                     </connections>
@@ -260,6 +268,11 @@
                         <action selector="changeScale:" destination="BYZ-38-t0r" id="H10-Qh-HNz"/>
                     </connections>
                 </pinchGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" numberOfTouchesRequired="2" id="87I-Jv-c4j">
+                    <connections>
+                        <action selector="resetAxes:" destination="BYZ-38-t0r" id="Vdy-Z3-iTX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2998" y="-824"/>
         </scene>
@@ -281,7 +294,7 @@
             </objects>
             <point key="canvasLocation" x="1209" y="-824"/>
         </scene>
-        <!--Random Simulation-->
+        <!--Random Simulator View Controller-->
         <scene sceneID="Fwd-5U-FxP">
             <objects>
                 <viewController id="BHW-VS-wuq" customClass="RandomSimulatorViewController" customModule="Three_Body" customModuleProvider="target" sceneMemberID="viewController">
@@ -301,6 +314,7 @@
                                     <outletCollection property="gestureRecognizers" destination="1Ur-jM-YFz" appends="YES" id="o3O-ED-r34"/>
                                     <outletCollection property="gestureRecognizers" destination="cTq-jg-jSn" appends="YES" id="aKB-cy-baN"/>
                                     <outletCollection property="gestureRecognizers" destination="BNi-Qe-mWG" appends="YES" id="rTS-2d-2Zm"/>
+                                    <outletCollection property="gestureRecognizers" destination="Ew2-Ne-Xsn" appends="YES" id="0yz-W6-kTa"/>
                                 </connections>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUI-5U-VYW">
@@ -341,43 +355,33 @@
                                     <constraint firstAttribute="height" constant="80" id="je2-vs-kEt"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qn7-Dv-WY1">
-                                <rect key="frame" x="8" y="118" width="80" height="38"/>
-                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="1kq-9F-w0P"/>
-                                    <constraint firstAttribute="height" constant="38" id="oTz-rB-b74"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="New">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="newCase:" destination="BHW-VS-wuq" eventType="touchUpInside" id="uTV-tL-FyE"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="s7q-h0-6L7" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leadingMargin" constant="2" id="5ah-KF-RXO"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" id="7an-Us-QB8"/>
-                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="top" secondItem="RUI-5U-VYW" secondAttribute="bottom" constant="8" id="98G-ZM-8XY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s7q-h0-6L7" secondAttribute="trailing" constant="2" id="HmO-Li-0g5"/>
                             <constraint firstItem="RUI-5U-VYW" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leading" constant="8" id="LaM-Gg-QFb"/>
                             <constraint firstItem="RUI-5U-VYW" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" constant="8" id="LqA-W9-Rg9"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="bottom" secondItem="ssC-XQ-3rX" secondAttribute="top" id="P4A-W2-EbP"/>
                             <constraint firstAttribute="trailing" secondItem="0zK-uY-WUB" secondAttribute="trailing" id="SGY-rm-xtp"/>
-                            <constraint firstItem="Qn7-Dv-WY1" firstAttribute="leading" secondItem="RUI-5U-VYW" secondAttribute="leading" id="bs1-Ew-VMG"/>
                             <constraint firstItem="IiJ-mH-I5e" firstAttribute="top" secondItem="S90-U4-myn" secondAttribute="bottom" id="nVz-1a-mmD"/>
                             <constraint firstItem="ssC-XQ-3rX" firstAttribute="top" secondItem="s7q-h0-6L7" secondAttribute="bottom" constant="2" id="oP4-JA-1NQ"/>
                             <constraint firstAttribute="trailing" secondItem="IiJ-mH-I5e" secondAttribute="trailing" id="unC-OR-Hrw"/>
                             <constraint firstItem="0zK-uY-WUB" firstAttribute="leading" secondItem="fje-mW-KlW" secondAttribute="leading" id="yrl-Ql-WoL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Random Simulation" id="Zz7-vm-kIm"/>
+                    <navigationItem key="navigationItem" id="Zz7-vm-kIm">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="qJG-zD-nFH">
+                            <connections>
+                                <action selector="newCase:" destination="BHW-VS-wuq" id="5dh-ks-IE5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="axesView" destination="IiJ-mH-I5e" id="p0e-40-wqY"/>
+                        <outlet property="resetButton" destination="qJG-zD-nFH" id="OFg-sH-SV8"/>
                         <outlet property="simulationSwitch" destination="RUI-5U-VYW" id="s6k-Dn-UL5"/>
                         <outlet property="stellarView" destination="0zK-uY-WUB" id="9jg-JS-Ven"/>
                     </connections>
@@ -393,6 +397,11 @@
                         <action selector="rotate2:" destination="BHW-VS-wuq" id="BPj-3A-iVH"/>
                     </connections>
                 </rotationGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" numberOfTouchesRequired="2" id="Ew2-Ne-Xsn">
+                    <connections>
+                        <action selector="resetAxes:" destination="BHW-VS-wuq" id="5O2-gi-WKI"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <pinchGestureRecognizer id="BNi-Qe-mWG">
                     <connections>
                         <action selector="changeScale:" destination="BHW-VS-wuq" id="yza-P1-oSw"/>
@@ -403,6 +412,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EdP-Zh-ARd"/>
+        <segue reference="qjd-pV-6h3"/>
     </inferredMetricsTieBreakers>
 </document>

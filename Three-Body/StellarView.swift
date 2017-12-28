@@ -57,6 +57,10 @@ class StellarView: UIView
                     addSubview(stellarView)
                 }
             }
+        } else {
+            for stellarSubview in subviews {
+                stellarSubview.removeFromSuperview()
+            }
         }
     }
 }
