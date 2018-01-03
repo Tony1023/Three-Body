@@ -128,12 +128,12 @@ class SimulatorViewController: UIViewController, StellarCoordinateDelegate
         }
         // Insertion sort?
         if coordinates[0].depth > coordinates[1].depth {
-            swap(&coordinates[0], &coordinates[1])
+            coordinates.swapAt(0, 1)
         }
         if coordinates[1].depth > coordinates[2].depth {
-            swap(&coordinates[1], &coordinates[2])
+            coordinates.swapAt(1, 2)
             if coordinates[0].depth > coordinates[1].depth {
-                swap(&coordinates[0], &coordinates[1])
+                coordinates.swapAt(0, 1)
             }
         }
         var endpoints = [(CGPoint, Int)]()
