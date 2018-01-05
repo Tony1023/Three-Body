@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bdf-I7-buB">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="EMv-3f-ZP0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Ht-k6-Dm1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-l6-yfG">
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-Aw-e9a">
-                                <rect key="frame" x="107" y="597" width="159" height="50"/>
+                                <rect key="frame" x="107" y="742" width="159" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Custom States"/>
@@ -77,7 +77,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="don-bg-7kv">
-                                <rect key="frame" x="99" y="539" width="176" height="50"/>
+                                <rect key="frame" x="99" y="684" width="176" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Random (auto)"/>
@@ -86,7 +86,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yJ-ex-Hyb">
-                                <rect key="frame" x="99" y="481" width="176" height="50"/>
+                                <rect key="frame" x="99" y="626" width="176" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="New Blank State"/>
@@ -108,7 +108,7 @@
             <objects>
                 <tableViewController id="eUJ-4y-Cun" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WFn-fo-uw2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5B2-RX-6pK" id="RNg-w8-xcP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -140,11 +140,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8l-jO-sQa" customClass="StellarView" customModule="Three_Body" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -156,7 +156,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STb-JF-9Np">
-                                <rect key="frame" x="8" y="72" width="80" height="38"/>
+                                <rect key="frame" x="8" y="96" width="80" height="38"/>
                                 <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="7Qj-qe-DnF"/>
@@ -171,7 +171,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-lr-JKt">
-                                <rect key="frame" x="2" y="625" width="371" height="40"/>
+                                <rect key="frame" x="2" y="736" width="371" height="40"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tES-v3-lDC">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -210,7 +210,7 @@
                                 </constraints>
                             </stackView>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IdU-H0-9o7" customClass="AxesView" customModule="Three_Body" customModuleProvider="target">
-                                <rect key="frame" x="295" y="64" width="80" height="80"/>
+                                <rect key="frame" x="295" y="88" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="jtT-cy-1hf"/>
                                     <constraint firstAttribute="height" constant="80" id="vzE-z8-mFD"/>
@@ -222,6 +222,7 @@
                         <constraints>
                             <constraint firstItem="J8l-jO-sQa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="5CU-c3-dmH"/>
                             <constraint firstItem="IdU-H0-9o7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5up-B4-ShS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kl9-lr-JKt" secondAttribute="bottom" constant="2" id="86J-YR-VMB"/>
                             <constraint firstItem="STb-JF-9Np" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="91f-OH-Q05"/>
                             <constraint firstItem="J8l-jO-sQa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fhe-LR-fgd"/>
                             <constraint firstAttribute="trailing" secondItem="IdU-H0-9o7" secondAttribute="trailing" id="MKL-tQ-ZwO"/>
@@ -230,7 +231,6 @@
                             <constraint firstItem="STb-JF-9Np" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="aO4-3V-AXx"/>
                             <constraint firstItem="kl9-lr-JKt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="bcg-q1-s40"/>
                             <constraint firstAttribute="trailing" secondItem="J8l-jO-sQa" secondAttribute="trailing" id="evW-Cu-b4v"/>
-                            <constraint firstAttribute="bottom" secondItem="kl9-lr-JKt" secondAttribute="bottom" constant="2" id="jSv-93-6JP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ANL-Jb-mBy">
@@ -282,7 +282,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bdf-I7-buB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bRw-vK-VZ6">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -303,11 +303,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ssC-XQ-3rX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fje-mW-KlW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zK-uY-WUB" customClass="StellarView" customModule="Three_Body" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -318,7 +318,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUI-5U-VYW">
-                                <rect key="frame" x="8" y="72" width="80" height="38"/>
+                                <rect key="frame" x="8" y="96" width="80" height="38"/>
                                 <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="gvY-Bu-XC6"/>
@@ -333,7 +333,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-h0-6L7">
-                                <rect key="frame" x="18" y="625" width="339" height="41"/>
+                                <rect key="frame" x="18" y="736" width="339" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="s33-Bg-cKl"/>
                                 </constraints>
@@ -349,7 +349,7 @@
                                 </connections>
                             </segmentedControl>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="IiJ-mH-I5e" customClass="AxesView" customModule="Three_Body" customModuleProvider="target">
-                                <rect key="frame" x="295" y="64" width="80" height="80"/>
+                                <rect key="frame" x="295" y="88" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="fOk-b7-BHe"/>
                                     <constraint firstAttribute="height" constant="80" id="je2-vs-kEt"/>
