@@ -23,16 +23,15 @@ class RandomSimulatorViewController: SimulatorViewController
     
     private var escaped = false {
         didSet {
-            if escaped { beginRestartCountdown(from: 5) }
+            if escaped && !oldValue { beginRestartCountdown(from: 5) }
         }
     }
     
     private func beginRestartCountdown(from time: Int) {
+        print("Function called at countdown = \(time)")
         if time <= 0 {
             startNew()
             simulationIsOn = true
-            
-            print(countdown ?? -1)
         } else {
             navigationItem.title = "Escaped. Restarting in \(time)..."
             countdown = time
@@ -70,9 +69,10 @@ class RandomSimulatorViewController: SimulatorViewController
     }
     
     func startNew() {
+        print("Starting new case")
         stellarBodies = []
-        let numberOfStars = arc4random() % 3 + 3
-        for _ in 0..<numberOfStars {
+        let numberOfNewStars = 3
+        for _ in 0..<numberOfNewStars {
             stellarBodies.append(StellarBody(random: true))
         }
         StellarBody.centralize(super.stellarBodies)
